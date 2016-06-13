@@ -20,6 +20,7 @@ import BasicMonthView, { getDaysInMonthView } from '../BasicMonthView'
 
 import ON_KEY_DOWN from './onKeyDown'
 import NAV_KEYS from './navKeys'
+import i18n from '../utils/i18n'
 
 let TODAY
 
@@ -156,21 +157,21 @@ const renderFooter = (props, buttonHandlers) => {
 
   const footerProps = assignDefined({}, footerFnProps, {
     todayButton: props.todayButton,
-    todayButtonText: props.todayButtonText,
+    todayButtonText: props.todayButtonText ? props.todayButtonText : i18n(props.locale, 'todayButtonText'),
     clearButton: props.clearButton,
-    clearButtonText: props.clearButtonText,
+    clearButtonText: props.clearButtonText ? props.clearButtonText : i18n(props.locale, 'clearButtonText'),
 
     okButton: props.okButton === undefined && !props.insideField ?
       false :
       props.okButton,
 
-    okButtonText: props.okButtonText,
+    okButtonText: props.okButtonText ? props.okButtonText : i18n(props.okButtonText, 'okButtonText'),
 
     cancelButton: props.cancelButton === undefined && !props.insideField ?
       false :
       props.cancelButton,
 
-    cancelButtonText: props.cancelButtonText,
+    cancelButtonText: props.cancelButtonText ? props.cancelButtonText : i18n(props.cancelButtonText, 'cancelButtonText'),
 
     clearDate: props.clearDate || props.footerClearDate
   })
